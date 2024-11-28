@@ -17,7 +17,8 @@ function BestSeller() {
       <TitleAndDesc
         title1="BEST"
         title2="SELLER"
-        desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the."
+        desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the."
+        className="font-bold text-4xl md:text-5xl"
       />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 section-container py-7">
         {bestSeller.map((p, index) => (
