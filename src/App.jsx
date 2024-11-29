@@ -11,12 +11,14 @@ import Orders from "../src/pages/Orders";
 import Login from "../src/pages/Login";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import SerachBar from "./components/SerachBar";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 */}
       <NavBar />
+      <SerachBar />
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/frontend_assets/dknlogo.png";
 import { assets } from "../assets/frontend_assets/assets";
 
 import { Link, NavLink } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 function NavBar() {
   const [visible, setVisible] = useState(false);
+  const { setShowSearch } = useContext(ShopContext);
   return (
     <div className="w-full fixed top-0 left-0 text-white z-50 shadow-md bg-white">
       <div className="flex items-center justify-between py-5 font-medium  max-w-7xl mx-auto px-6">
@@ -38,7 +40,12 @@ function NavBar() {
 
         {/* search , user & cart icons */}
         <div className="flex items-center gap-6">
-          <img src={assets.search_icon} alt="" className="w-5 cursor-pointer" />
+          <img
+            src={assets.search_icon}
+            alt=""
+            className="w-5 cursor-pointer"
+            onClick={() => setShowSearch(true)}
+          />
           <div className="group relative">
             <img
               src={assets.profile_icon}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import TitleAndDesc from "../components/TitleAndDesc";
 import ProductCart from "../components/ProductCart";
@@ -31,6 +31,10 @@ function Collection() {
     });
   };
 
+  // logic for getting items by using search bar
+
+  const { search } = useContext(ShopContext);
+
   // Apply filters
   const applyFilter = (products) => {
     return products.filter((product) => {
@@ -39,8 +43,11 @@ function Collection() {
         selectedCategory.includes(product.category);
       const typeMatch =
         selectedType.length === 0 || selectedType.includes(product.subCategory);
+      const searchMatch =
+        search === "" ||
+        product.name.toLowerCase().includes(search.toLowerCase());
 
-      return categoryMatch && typeMatch;
+      return categoryMatch && typeMatch && searchMatch;
     });
   };
 
