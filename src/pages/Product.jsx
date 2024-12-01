@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
+import RealtedProducts from "../components/RealtedProducts";
 
 function Product() {
   // 1. Get the product ID from the URL
@@ -99,6 +100,33 @@ function Product() {
           </div>
         </div>
       </div>
+      {/* description and reviews */}
+
+      <div className="my-10">
+        <div className="collapse rounded-none border px-3 py-5">
+          <input type="radio" name="my-accordion-2" defaultChecked />
+          <div className="collapse-title text-sm font-semibold ">
+            Description
+          </div>
+          <div className="collapse-content">
+            <p className="text-sm">
+              An e-commerce website is an online platform that facilitates the
+              buying and selling of products or services over the internet. It
+              serves as a virtual marketplace where businesses and individuals
+              can showcase their products, interact with customers, and conduct
+              transactions without the need for a physical presence. E-commerce
+              websites have gained immense popularity due to their convenience,
+              accessibility, and the global reach they offer.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* related Products Scetion */}
+      <RealtedProducts
+        category={productData.category}
+        subCategory={productData.subCategory}
+      />
     </div>
   );
 }
