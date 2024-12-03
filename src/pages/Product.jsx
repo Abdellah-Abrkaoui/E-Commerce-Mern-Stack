@@ -13,7 +13,7 @@ function Product() {
   const [productImage, setProductImage] = useState("");
 
   // Access the products from the ShopContext
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
 
   // function for getting the product
 
@@ -89,7 +89,10 @@ function Product() {
               </button>
             ))}
           </div>
-          <button className="px-6 py-2 bg-black text-white uppercase mt-3">
+          <button
+            className="px-6 py-2 bg-black text-white uppercase mt-3"
+            onClick={() => addToCart(productData._id, slectedSize)}
+          >
             Add To Cart
           </button>
           <hr className="min-w-[70%] w-[70%] mt-6" />

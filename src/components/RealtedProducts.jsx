@@ -17,7 +17,7 @@ function RealtedProducts({ category, subCategory }) {
       );
       setRelatedProduct(productCopy.slice(0, 5));
     }
-  }, [category, products, relatedProduct, subCategory]);
+  }, [category, products, subCategory]);
 
   return (
     <div className="py-5 mb-10">
