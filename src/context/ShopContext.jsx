@@ -59,6 +59,37 @@ const ShopContextProvider = (props) => {
     }
     return totalCount;
   };
+
+  // function for updating the quantity of the product
+
+  const updatingProductQuantity = async (productId, size, quantity) => {
+    const cartData = structuredClone(cartItems);
+    cartData[productId][size] = quantity;
+    setCartItems(cartData);
+  };
+
+  // get total of all items in the cart
+
+  const getTotalAmount = () => {
+    let totalAmout = 0;
+    for (const productId in cartItems) {
+      for (const size in cartItems[productId]) {
+        const quantity = cartItems[productId][size];
+
+        const productData = products.find(
+          (product) => product._id === productId
+        );
+
+        if (productData) {
+          const totalItem = productData.price * quantity;
+          totalAmout += totalItem;
+        }
+      }
+    }
+
+    return totalAmout;
+  };
+
   const currency = "$";
   const delivery_fee = 10;
   const value = {
@@ -71,6 +102,9 @@ const ShopContextProvider = (props) => {
     setShowSearch,
     addToCart,
     getCartCount,
+    cartItems,
+    updatingProductQuantity,
+    getTotalAmount,
   };
 
   return (
