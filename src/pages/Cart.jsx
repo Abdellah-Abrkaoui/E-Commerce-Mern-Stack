@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import CartTotal from "../components/CartTotal";
 
 function Cart() {
-  const { products, currency, cartItems, updatingProductQuantity } =
+  const { products, currency, cartItems, updatingProductQuantity, navigate } =
     useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
@@ -103,6 +103,13 @@ function Cart() {
       </div>
 
       <CartTotal />
+      {/* buttton proced to checkout */}
+      <button
+        onClick={() => navigate("/place-order")}
+        className="bg-black py-2 px-5 text-white font-medium cursor-pointer mb-10"
+      >
+        PROCEED TO CHECKOUT
+      </button>
     </div>
   );
 }
