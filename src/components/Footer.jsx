@@ -34,7 +34,7 @@ function Footer() {
           Get in touch
         </h6>
         <a className="link link-hover">+1-212-456-7890</a>
-        <a className="link link-hover">greatstackdev@gmail.com</a>
+        <a className="link link-hover">contact@kdn.com</a>
       </nav>
     </footer>
   );

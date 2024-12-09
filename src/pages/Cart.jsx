@@ -44,9 +44,9 @@ function Cart() {
             return (
               <div
                 key={index}
-                className="flex md:flex-row flex-col md:items-center md:justify-between gap-10 border-t"
+                className="flex md:flex-row flex-col md:items-center md:justify-between gap-10 border-y py-2"
               >
-                <div className="flex items-center gap-6 mt-1">
+                <div className="flex items-center gap-6">
                   <img
                     src={productData.image}
                     alt=""
