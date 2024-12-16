@@ -7,6 +7,7 @@ import connectDB from "./config/mongodb.js";
 
 // import cloudinary config file
 import cloudinaryConfig from "./config/cloudinary.js";
+import userRouter from "./routes/user.route.js";
 
 dotenv.config({
   path: ".env",
@@ -19,6 +20,10 @@ app.use(cors());
 
 // call cloudinaryConfig function
 cloudinaryConfig();
+
+// routes
+
+app.use("/api/user", userRouter);
 
 // connecting to db
 const startServer = async () => {
