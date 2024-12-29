@@ -70,8 +70,36 @@ export const addProduct = async (req, res) => {
   }
 };
 
-export const getProducts = async (req, res) => {};
+export const getProducts = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-export const removeProduct = async (req, res) => {};
+export const removeProduct = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    if (!deletedProduct) {
+      return res.status(404).json({ message: "Product not found" });
+    }
 
-export const getSingleProduct = async (req, res) => {};
+    res.status(200).json({ message: "product deleted successfuly" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getSingleProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    const singleProduct = await Product.findById(productId);
+    res.status(200).json(singleProduct);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

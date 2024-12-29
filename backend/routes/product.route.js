@@ -14,12 +14,12 @@ const productRoute = express.Router();
 productRoute.post("/add", upload.single("image"), addProduct);
 
 // list products from db route
-productRoute.get("allProducts", getProducts);
+productRoute.get("/allProducts", getProducts);
 
 // remove a product from db route
-productRoute.delete("delete", removeProduct);
+productRoute.post("/delete", removeProduct);
 
 // get a single product in db route
-productRoute.get("/singleProduct", getSingleProduct);
+productRoute.post("/singleProduct", getSingleProduct);
 
 export default productRoute;
