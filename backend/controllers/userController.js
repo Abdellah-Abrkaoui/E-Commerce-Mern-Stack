@@ -74,4 +74,30 @@ export const userLogin = async (req, res) => {
 };
 
 // Admin Login
-export const adminLogin = async (req, res) => {};
+export const adminLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
+    if (
+      email === process.env.ADMIN_EMAIL &&
+      password === process.env.ADMIN_PASS
+    ) {
+      const token = jwt.sign({ email }, process.env.JWT_SECRET_KEY, {
+        expiresIn: "1h",
+      });
+      return res.json({ success: true, token });
+    }
+
+    // if credentials are incorrect
+    return res
+      .status(401)
+      .json({ success: false, message: "email or password are incorrect" });
+  } catch (error) {
+    return res.status(404).json({ message: "error login to admin account" });
+  }
+};
