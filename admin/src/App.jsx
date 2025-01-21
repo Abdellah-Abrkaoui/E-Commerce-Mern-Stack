@@ -15,21 +15,20 @@ import "react-toastify/dist/ReactToastify.css";
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
     }
   }, [token]);
 
   return (
     <>
       <ToastContainer />
-
-      {token == "" ? (
-        <Login setToken={setToken} />
-      ) : (
+      {token ? (
         <div className="section-container pt-5">
           <Navbar setToken={setToken} />
           <div className="flex gap-10">
@@ -38,15 +37,19 @@ function App() {
             </div>
             <div className="items-start">
               <Routes>
-                <Route path="/add" element={<AddProduct />} />
-                <Route path="/list" element={<ListProducts />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="*" element={<Navigate to="/add" replace />} />{" "}
-                {/* Redirect unknown paths */}
+                <Route path="/add" element={<AddProduct token={token} />} />
+                <Route path="/list" element={<ListProducts token={token} />} />
+                <Route path="/orders" element={<Orders token={token} />} />
+                <Route path="*" element={<Navigate to="/add" replace />} />
               </Routes>
             </div>
           </div>
         </div>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Login setToken={setToken} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       )}
     </>
   );
