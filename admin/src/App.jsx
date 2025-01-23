@@ -35,7 +35,7 @@ function App() {
             <div className="min-w-[300px] w-[300px] border-r max-h-screen">
               <SideBar />
             </div>
-            <div className="items-start">
+            <div className="items-start w-full">
               <Routes>
                 <Route path="/add" element={<AddProduct token={token} />} />
                 <Route path="/list" element={<ListProducts token={token} />} />
