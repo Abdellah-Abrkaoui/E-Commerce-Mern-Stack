@@ -4,6 +4,13 @@ import streamifier from "streamifier";
 
 export const addProduct = async (req, res) => {
   try {
+    console.log("Full Request Body:", req.body); // ✅ Debugging
+    console.log(
+      "Received bestseller:",
+      req.body.bestSeller,
+      typeof req.body.bestSeller
+    ); // ✅ Check value
+
     const {
       name,
       description,
@@ -11,7 +18,7 @@ export const addProduct = async (req, res) => {
       category,
       subCategory,
       sizes,
-      bestseller,
+      bestSeller,
     } = req.body;
 
     let imageUrl = null;
@@ -47,7 +54,7 @@ export const addProduct = async (req, res) => {
       category,
       subCategory,
       sizes: Array.isArray(sizes) ? sizes : JSON.parse(sizes),
-      bestseller: bestseller === "true" ? true : false,
+      bestseller: bestSeller === "true" ? true : false,
       image: imageUrl,
       date: Date.now(),
     };

@@ -34,8 +34,6 @@ function AddProduct({ token }) {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log(response.data);
-
       if (response.data.sucess) {
         toast.success(response.data.message);
         setName("");

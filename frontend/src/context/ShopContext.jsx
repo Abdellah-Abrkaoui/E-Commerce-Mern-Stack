@@ -1,7 +1,9 @@
 import { createContext, useState } from "react";
-import { products } from "../assets/frontend_assets/assets";
+// import { products } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext();
@@ -17,6 +19,12 @@ const ShopContextProvider = (props) => {
 
   // for adding products in the cart
   const [cartItems, setCartItems] = useState({});
+
+  // import backend url
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  // store products in useState
+  const [products, setProducts] = useState([]);
 
   // async function addToCart
 
@@ -96,6 +104,27 @@ const ShopContextProvider = (props) => {
 
   const currency = "$";
   const delivery_fee = 10;
+
+  const getAllProducts = async () => {
+    try {
+      const response = await axios.get(
+        `${backendUrl}/api/products/allProducts`
+      );
+      if (response.status) {
+        setProducts(response.data); // Update the state
+      } else {
+        console.log("Error while fetching data");
+      }
+    } catch (error) {
+      console.log("Error fetching products:", error);
+    }
+  };
+
+  // Fetch products when the component mounts
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   const value = {
     products,
     currency,
@@ -110,6 +139,7 @@ const ShopContextProvider = (props) => {
     updatingProductQuantity,
     getTotalAmount,
     navigate,
+    backendUrl,
   };
 
   return (
