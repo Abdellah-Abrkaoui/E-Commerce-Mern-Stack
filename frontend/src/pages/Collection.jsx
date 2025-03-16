@@ -119,7 +119,7 @@ function Collection() {
             <div className="flex items-center gap-2 text-xs">
               <input
                 onChange={() =>
-                  handleSubCategoryChange({ target: { value: "Topwear" } })
+                  handleSubCategoryChange({ target: { value: "TopWear" } })
                 }
                 type="checkbox"
                 name="topwear"
@@ -130,7 +130,7 @@ function Collection() {
             <div className="flex items-center gap-2 text-xs">
               <input
                 onChange={() =>
-                  handleSubCategoryChange({ target: { value: "Bottomwear" } })
+                  handleSubCategoryChange({ target: { value: "BottomWear" } })
                 }
                 type="checkbox"
                 name="bottomwear"
@@ -141,7 +141,7 @@ function Collection() {
             <div className="flex items-center gap-2 text-xs">
               <input
                 onChange={() =>
-                  handleSubCategoryChange({ target: { value: "Winterwear" } })
+                  handleSubCategoryChange({ target: { value: "WinterWear" } })
                 }
                 type="checkbox"
                 name="winterwear"

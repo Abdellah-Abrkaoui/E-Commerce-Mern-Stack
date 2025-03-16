@@ -7,7 +7,7 @@ function Contact() {
   return (
     <div className="section-container mt-32">
       <TitleAndDesc
-        title1="About"
+        title1="Contact"
         title2="us"
         desc=""
         className="font-bold text-xl md:text-2xl uppercase"
